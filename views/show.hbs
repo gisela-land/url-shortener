@@ -9,11 +9,22 @@
     <div>
       <div class="mt-5">
         <h3>Success! Please use this link:</h3>
-        <h4><a href="http://{{originUrl}}">http://{{host}}/{{shorten}}</a></h4>
+        <h4><a href="{{originUrl}}" id="copyText">https://{{host}}/{{shorten}}</a></h4>
         <div class="row justify-content-center">
-          <button class="btn btn-primary btn-sm mt-3 col-4" type="submit" id="short-button">
-            <h4>Copy</h4>
-          </button>
+          <input type="button" class="btn btn-primary mt-3 col-4" id="copyBtn" onclick="copyLink()"
+            data-toggle="tooltip" title="Copy to clipboard" value="Copy" style="font-size: 24px; font-weight: 700"
+            readonly />
+          <script>
+            function copyLink() {
+              const copyText = document.getElementById("copyText")
+              let selection = window.getSelection()
+              let range = document.createRange()
+              range.selectNodeContents(copyText)
+              selection.removeAllRanges()
+              selection.addRange(range)
+              document.execCommand('copy')
+            }
+          </script>
         </div>
       </div>
     </div>
