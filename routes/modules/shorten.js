@@ -12,11 +12,11 @@ const wordbag = [
 ]
 
 function getShortenWords() {
-  let d = Date.now();
-  console.log('***', d)
+  let d = Date.now()
+
   return 'xxxxx'.replace(/x/g, function (c) {
-    const r = (d + Math.random() * wordbag.length) % wordbag.length | 0;
-    d = Math.floor(d / wordbag.length);
+    const r = (d + Math.random() * wordbag.length) % wordbag.length | 0
+    d = Math.floor(d / wordbag.length)
     return wordbag[r]
   })
 }
@@ -37,7 +37,6 @@ router.get('/', (req, res) => {
       } else {
         shortUrl = urls[0].shorten
       }
-      console.log('--- ', shortUrl)
     })
     .then(() => {
       return res.render('show', { originUrl: oriUrl, host: host, shorten: shortUrl })
