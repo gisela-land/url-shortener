@@ -34,6 +34,10 @@ router.get('/', (req, res) => {
           url: oriUrl,
           shorten: shortUrl
         })
+        .then(() => {
+          return
+        })
+        .catch((err) => console.log(err))
       } else {
         shortUrl = urls[0].shorten
       }
@@ -41,6 +45,7 @@ router.get('/', (req, res) => {
     .then(() => {
       return res.render('show', { originUrl: oriUrl, host: host, shorten: shortUrl })
     })
+    .catch((err) => console.log(err))
 })
 
 module.exports = router
